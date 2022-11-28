@@ -92,8 +92,12 @@ const App: () => Node = () => {
   };
 
   const FetchApi = async () => {
-    const response = await axios.get(url);
+    try{
+      const response = await axios.get(url);
     setProductos(response.data);
+    } catch(error){
+      console.log(error)
+    }
   };
 
   const Entregado = item => {
@@ -222,7 +226,7 @@ const App: () => Node = () => {
           <FlatList
             data={arrayPedidos}
             renderItem={renderItem2}
-            keyExtractor={item => item.id}></FlatList>
+            keyExtractor={item => item}></FlatList>
           <Button mode="contained" onPress={() => setMeseroVisible(false)}>
             Volver
           </Button>
