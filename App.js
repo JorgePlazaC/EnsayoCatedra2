@@ -145,7 +145,7 @@ const App: () => Node = () => {
         onPress={() => {
           Entregado(title);
         }}>
-        Entregar pedido
+        Entregar
       </Button>
       <Button
         mode="contained"
@@ -153,7 +153,7 @@ const App: () => Node = () => {
         onPress={() => {
           Cancelado(title);
         }}>
-        Cancelar pedido
+        Cancelar
       </Button>
       <Button
         mode="contained"
@@ -161,7 +161,7 @@ const App: () => Node = () => {
         onPress={() => {
           Eliminar(title);
         }}>
-        Eliminar pedido
+        Eliminar
       </Button>
       </View>
       
