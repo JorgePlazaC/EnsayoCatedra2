@@ -138,8 +138,10 @@ const App: () => Node = () => {
       <Text style={styles.title}>Estado: {title.estado}</Text>
       <Text style={styles.title}>Detalle del pedido:</Text>
       <Text style={styles.title}>{title.detalle.pedido}</Text>
+      <View style = {styles.parent}>
       <Button
         mode="contained"
+        style = {styles.buttonEntregar}
         onPress={() => {
           Entregado(title);
         }}>
@@ -147,6 +149,7 @@ const App: () => Node = () => {
       </Button>
       <Button
         mode="contained"
+        style = {styles.buttonEntregar}
         onPress={() => {
           Cancelado(title);
         }}>
@@ -154,11 +157,14 @@ const App: () => Node = () => {
       </Button>
       <Button
         mode="contained"
+        style = {styles.buttonEntregar}
         onPress={() => {
           Eliminar(title);
         }}>
         Eliminar pedido
       </Button>
+      </View>
+      
       <Divider />
     </View>
   );
@@ -226,7 +232,7 @@ const App: () => Node = () => {
           <FlatList
             data={arrayPedidos}
             renderItem={renderItem2}
-            keyExtractor={item => item}></FlatList>
+            keyExtractor={(item, index) => item + index}></FlatList>
           <Button mode="contained" onPress={() => setMeseroVisible(false)}>
             Volver
           </Button>
@@ -252,6 +258,20 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
+  },
+  buttonEntregar: {
+    flex: 0.25,
+  },
+  buttonCancelar: {
+    flex: 0.25,
+  },
+  buttonEliminar: {
+    flex: 0.25,
+  },
+  parent: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-around",
   },
 });
 
