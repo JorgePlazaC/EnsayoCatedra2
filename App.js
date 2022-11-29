@@ -58,10 +58,13 @@ const App: () => Node = () => {
   const [arrayPedidos, setArrayPedidos] = React.useState([]);
   const [productos, setProductos] = React.useState([]);
 
+  const [borrar, setBorrar] = React.useState([]);
+
   const url = 'https://dummyjson.com/products';
 
   useEffect(() => {
     FetchApi();
+    FetchNormal()
   }, []);
 
   let Pedido = {
@@ -99,6 +102,18 @@ const App: () => Node = () => {
       console.log(error)
     }
   };
+
+  const FetchNormal = async () =>{
+    try {
+      const response = await fetch(
+        url
+      );
+      const json = await response.json();
+      setBorrar(json)
+    } catch (error) {
+      
+    }
+  }
 
   const Entregado = item => {
     item.estado = 'Entregado';
@@ -178,12 +193,14 @@ const App: () => Node = () => {
         <TextInput
           label="Número"
           value={inputNumMesa}
+          textContentType='telephoneNumber'
           onChangeText={inputNumMesa => setInputNumMesa(inputNumMesa)}
         />
         <Text>Ingrese su nombre</Text>
         <TextInput
           label="Nombre"
           value={inputNombre}
+          textContentType='name'
           onChangeText={inputNombre => setInputNombre(inputNombre)}
         />
         <Text>Ingrese su RUT</Text>
@@ -196,6 +213,7 @@ const App: () => Node = () => {
         <TextInput
           label="Email"
           value={inputEmail}
+          textContentType='emailAddress'
           onChangeText={inputEmail => setInputEmail(inputEmail)}
         />
         <Text>Ingrese la fecha de hoy</Text>
